@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - sep1@localhost" uuid="66102a97-c7b1-4a44-bb5e-2fa8b6af031b">
+    <database-info product="MySQL" version="5.6.24-enterprise-commercial-advanced-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="sep1"/>
+    <table name="attendancelog" schema="" catalog="sep1" type="TABLE">
+      <column name="logid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="employeeid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="entrydate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="logcode" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="logid"/>
+    </table>
+    <table name="employee" schema="" catalog="sep1" type="TABLE">
+      <column name="employeeid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="employeetype" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="username" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="userpass" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="departmentID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="gender" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="dob" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="phone" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="employeeid"/>
+    </table>
+    <table name="permission" schema="" catalog="sep1" type="TABLE">
+      <column name="permissionid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="logcode" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="permissionid"/>
+      <exported-key name="permissionglobal_ibfk_1" table="permissionglobal" schema="" catalog="sep1" columns="permissionid"/>
+      <exported-key name="permissionindividual_ibfk_1" table="permissionindividual" schema="" catalog="sep1" columns="permissionid"/>
+    </table>
+    <table name="permissionglobal" schema="" catalog="sep1" type="TABLE">
+      <column name="permissionid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="repeatdays" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12"/>
+      <column name="starthour" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="startminute" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="endhour" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="endminute" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="permissionid"/>
+      <foreign-key name="permissionglobal_ibfk_1" columns="permissionid" ref-table="permission" ref-schema="" ref-catalog="sep1" ref-columns="permissionid" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="permissionindividual" schema="" catalog="sep1" type="TABLE">
+      <column name="permissionid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="employeeid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="starttime" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="endtime" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="permissionid"/>
+      <foreign-key name="permissionindividual_ibfk_1" columns="permissionid" ref-table="permission" ref-schema="" ref-catalog="sep1" ref-columns="permissionid" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="relation" schema="" catalog="sep1" type="TABLE">
+      <column name="relationid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="superiorid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subordinateid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="relationid"/>
+    </table>
+  </data-source>
+</component>

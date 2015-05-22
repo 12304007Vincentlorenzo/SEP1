@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Created by Stephen Raharja-->
+<!-- Ver 1.0-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/sep1</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">anjing</property>
+        <mapping class="proj.obj.AttendanceLog"/>
+        <mapping class="proj.obj.Employee"/>
+        <mapping class="proj.obj.Permission"/>
+        <mapping class="proj.obj.PermissionGlobal"/>
+        <mapping class="proj.obj.PermissionIndividual"/>
+        <mapping class="proj.obj.Relation"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
